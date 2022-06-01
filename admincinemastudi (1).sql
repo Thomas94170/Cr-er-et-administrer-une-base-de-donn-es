@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 31 mai 2022 à 12:32
+-- Généré le : mer. 01 juin 2022 à 09:06
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.19
 
@@ -71,6 +71,7 @@ INSERT INTO `cinema` (`id`, `name`, `address`, `Zip`, `city`, `telephonNumber`) 
 --
 
 CREATE TABLE `hall` (
+  `id` int(11) NOT NULL,
   `roomNumber` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -78,8 +79,8 @@ CREATE TABLE `hall` (
 -- Déchargement des données de la table `hall`
 --
 
-INSERT INTO `hall` (`roomNumber`) VALUES
-(1);
+INSERT INTO `hall` (`id`, `roomNumber`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -88,6 +89,7 @@ INSERT INTO `hall` (`roomNumber`) VALUES
 --
 
 CREATE TABLE `internetpurchase` (
+  `id` int(11) NOT NULL,
   `price` decimal(10,0) DEFAULT NULL,
   `lastname` varchar(100) DEFAULT NULL,
   `firstname` varchar(100) DEFAULT NULL,
@@ -104,8 +106,8 @@ CREATE TABLE `internetpurchase` (
 -- Déchargement des données de la table `internetpurchase`
 --
 
-INSERT INTO `internetpurchase` (`price`, `lastname`, `firstname`, `telephoneNumber`, `email`, `datePayment`, `session`, `hour`, `movie`, `meansOfPayment`) VALUES
-('9', 'Tevez', 'Carlos', '0645678910', 'lapache12@exemple.fr', '2022-06-01', '2022-06-02', '22:30:00', 'Star Wars Episode 11', 'espèce');
+INSERT INTO `internetpurchase` (`id`, `price`, `lastname`, `firstname`, `telephoneNumber`, `email`, `datePayment`, `session`, `hour`, `movie`, `meansOfPayment`) VALUES
+(1, '9', 'Tevez', 'Carlos', '0645678910', 'lapache12@exemple.fr', '2022-06-01', '2022-06-02', '22:30:00', 'Star Wars Episode 11', 'espèce');
 
 -- --------------------------------------------------------
 
@@ -114,6 +116,7 @@ INSERT INTO `internetpurchase` (`price`, `lastname`, `firstname`, `telephoneNumb
 --
 
 CREATE TABLE `movie` (
+  `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `tag` varchar(100) DEFAULT NULL,
   `duration` int(11) DEFAULT NULL,
@@ -124,8 +127,8 @@ CREATE TABLE `movie` (
 -- Déchargement des données de la table `movie`
 --
 
-INSERT INTO `movie` (`name`, `tag`, `duration`, `releaseDate`) VALUES
-('Sir Alex Ferguson: Le rêve impossible', 'documentaire', 130, '2021-01-21');
+INSERT INTO `movie` (`id`, `name`, `tag`, `duration`, `releaseDate`) VALUES
+(1, 'Sir Alex Ferguson: Le rêve impossible', 'documentaire', 130, '2021-01-21');
 
 -- --------------------------------------------------------
 
@@ -134,6 +137,7 @@ INSERT INTO `movie` (`name`, `tag`, `duration`, `releaseDate`) VALUES
 --
 
 CREATE TABLE `purchaseonsite` (
+  `id` int(11) NOT NULL,
   `price` decimal(10,0) DEFAULT NULL,
   `session` date DEFAULT NULL,
   `hour` time DEFAULT NULL,
@@ -146,8 +150,8 @@ CREATE TABLE `purchaseonsite` (
 -- Déchargement des données de la table `purchaseonsite`
 --
 
-INSERT INTO `purchaseonsite` (`price`, `session`, `hour`, `roomNumber`, `movie`, `meansOfPayment`) VALUES
-('9', '2022-01-06', '15:30:00', 12, 'The Last Samurai', 'carte-bancaire');
+INSERT INTO `purchaseonsite` (`id`, `price`, `session`, `hour`, `roomNumber`, `movie`, `meansOfPayment`) VALUES
+(1, '9', '2022-01-06', '15:30:00', 12, 'The Last Samurai', 'carte-bancaire');
 
 -- --------------------------------------------------------
 
@@ -156,6 +160,7 @@ INSERT INTO `purchaseonsite` (`price`, `session`, `hour`, `roomNumber`, `movie`,
 --
 
 CREATE TABLE `session` (
+  `id` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `hour` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -164,8 +169,8 @@ CREATE TABLE `session` (
 -- Déchargement des données de la table `session`
 --
 
-INSERT INTO `session` (`date`, `hour`) VALUES
-('2022-05-30', '21:00:00');
+INSERT INTO `session` (`id`, `date`, `hour`) VALUES
+(1, '2022-05-30', '21:00:00');
 
 -- --------------------------------------------------------
 
@@ -174,6 +179,7 @@ INSERT INTO `session` (`date`, `hour`) VALUES
 --
 
 CREATE TABLE `tag` (
+  `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -181,8 +187,8 @@ CREATE TABLE `tag` (
 -- Déchargement des données de la table `tag`
 --
 
-INSERT INTO `tag` (`name`) VALUES
-('documentaire');
+INSERT INTO `tag` (`id`, `name`) VALUES
+(1, 'documentaire');
 
 -- --------------------------------------------------------
 
@@ -191,6 +197,7 @@ INSERT INTO `tag` (`name`) VALUES
 --
 
 CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
   `lastname` varchar(100) DEFAULT NULL,
   `firstname` varchar(100) DEFAULT NULL,
   `telephoneNumber` varchar(10) DEFAULT NULL,
@@ -201,8 +208,8 @@ CREATE TABLE `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`lastname`, `firstname`, `telephoneNumber`, `email`) VALUES
-('Rooney', 'Wayne', '612345678', 'infernalWayneRooney@exemple.com');
+INSERT INTO `user` (`id`, `lastname`, `firstname`, `telephoneNumber`, `email`) VALUES
+(1, 'Rooney', 'Wayne', '0612345678', 'infernalWayneRooney@exemple.com');
 
 --
 -- Index pour les tables déchargées
@@ -221,6 +228,48 @@ ALTER TABLE `cinema`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `hall`
+--
+ALTER TABLE `hall`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `internetpurchase`
+--
+ALTER TABLE `internetpurchase`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `movie`
+--
+ALTER TABLE `movie`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `purchaseonsite`
+--
+ALTER TABLE `purchaseonsite`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `session`
+--
+ALTER TABLE `session`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `tag`
+--
+ALTER TABLE `tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -234,6 +283,48 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT pour la table `cinema`
 --
 ALTER TABLE `cinema`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `hall`
+--
+ALTER TABLE `hall`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `internetpurchase`
+--
+ALTER TABLE `internetpurchase`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `movie`
+--
+ALTER TABLE `movie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `purchaseonsite`
+--
+ALTER TABLE `purchaseonsite`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `session`
+--
+ALTER TABLE `session`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `tag`
+--
+ALTER TABLE `tag`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
