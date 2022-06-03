@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 03 juin 2022 à 11:29
+-- Généré le : ven. 03 juin 2022 à 11:53
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.19
 
@@ -139,15 +139,16 @@ CREATE TABLE `session` (
   `id` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `hour` time DEFAULT NULL,
-  `hall_id` int(11) DEFAULT NULL
+  `hall_id` int(11) DEFAULT NULL,
+  `prog_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `session`
 --
 
-INSERT INTO `session` (`id`, `date`, `hour`, `hall_id`) VALUES
-(1, '2022-05-30', '21:00:00', 0);
+INSERT INTO `session` (`id`, `date`, `hour`, `hall_id`, `prog_id`) VALUES
+(1, '2022-05-30', '21:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -260,7 +261,8 @@ ALTER TABLE `programming`
 --
 ALTER TABLE `session`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `hall_id` (`hall_id`);
+  ADD KEY `hall_id` (`hall_id`),
+  ADD KEY `prog_id` (`prog_id`);
 
 --
 -- Index pour la table `tag`
@@ -360,6 +362,8 @@ ALTER TABLE `hall`
 -- Contraintes pour la table `movie`
 --
 ALTER TABLE `movie`
+  ADD CONSTRAINT `movie_ibfk_1` FOREIGN KEY (`id`) REFERENCES `session` (`id`),
+  ADD CONSTRAINT `movie_ibfk_2` FOREIGN KEY (`session_id`) REFERENCES `session` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `movie_ibfk_3` FOREIGN KEY (`session_id`) REFERENCES `session` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -372,7 +376,8 @@ ALTER TABLE `programming`
 -- Contraintes pour la table `session`
 --
 ALTER TABLE `session`
-  ADD CONSTRAINT `session_ibfk_1` FOREIGN KEY (`hall_id`) REFERENCES `hall` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `session_ibfk_1` FOREIGN KEY (`hall_id`) REFERENCES `hall` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `session_ibfk_2` FOREIGN KEY (`prog_id`) REFERENCES `programming` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `tag`
