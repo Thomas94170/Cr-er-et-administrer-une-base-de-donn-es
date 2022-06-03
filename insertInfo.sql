@@ -10,17 +10,15 @@ INSERT INTO hall (roomNumber) VALUES
 (2),
 (3);
 
-INSERT INTO internetpurchase (price, lastname, firstname, telephoneNumber, email, datePayment, session, hour, movie, meansOfPayment) VALUES
-('7.80', 'Fletcher', 'Darren', '0609876554', 'scottish@exemple.fr', '2022-06-04', '2022-06-04', '20:30:00', 'Highlander 9', 'carte bancaire'),
-('10', 'Park', 'Ji-Sung', '0607432165', 'sous-coté-de-PL@exemple.fr', '2022-26-03', '2022-27-03', '13:30:00', 'Peninsula', 'paypal');
 
 INSERT INTO movie (name, tag, duration, releaseDate) VALUES
 ('Titanic 2 : le retour de Jack', 'Horreur', 120, '2021-07-09'),
 ('Liverpool le quadruplé', 'Comédie ', 90, '2022-05-28');
 
-INSERT INTO purchaseonsite (price, session, hour, roomNumber, movie, meansOfPayment) VALUES
-('10.80', '2022-02-01', '17:30:00', 10, 'Heat', 'espèce'),
-('5', '2022-22-11', '15:30:00', 19, 'Avatar 2', 'carte bancaire');
+INSERT INTO ticketpurchase (session,hour,roomNumber,movie,meansOfPayment,fullPrice,studentPrice,teenPrice,purchaseOnSite)
+ VALUES 
+('2022-02-06','15:30:00',12,'Heat','carte bancaire',true,false,false,true),
+('2022-03-06','17:30:00',2,'Last Samurai','carte bancaire',true,false,false,false);
 
 INSERT INTO session (date, hour) VALUES
 ('2022-07-10', '13:00:00'),
