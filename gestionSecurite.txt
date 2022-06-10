@@ -1,0 +1,16 @@
+Connaître les techniques de gestion de la sécurité d'une base de données
+
+Quelles peuvent être les solutions :
+
+- Isoler notre serveur
+
+- Ne pas le surcharger avec des composants superflus
+
+- Faire des mises à jour régulières
+
+- Application de restrictions (donner des autorisations spécifiques à telle personnes se connectant suivant leurs rôles,
+    ne pas donner de rôles d administrateurs à plusieurs personnes
+
+- Gestion des connexions : Mot de passe fort poiur l administrateur, faire un audit régulier des connexions des utilisateurs
+
+- Protection des sauvegardes
